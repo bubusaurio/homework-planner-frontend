@@ -1,35 +1,57 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import React, { useState } from 'react';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [showData, setShowData] = useState<boolean>(false);
+  const [showMessage, setMessage] = useState<boolean>(false);
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+  const HandleInputChange = (stateUpdate: (arg0: any) => void) => {
+      return (event: { target: { value: any; }; }) => {
+          stateUpdate(event.target.value);
+      }
+  }
+
+  const HandleOnClickEnviar = () => {
+      if(email == "pmercadoruano@gmail.com" && password == "12234" ){
+          setShowData(true)
+          setMessage(false)
+      }else{
+          setShowData(false)
+          setMessage(true)
+      }
+  }
+
+  return(
+      <>
+      <section className="dataContainer">
+          {
+              showData ?(
+                  <>
+                  <p>Email: {email}</p>
+                  <p>Password: {password}</p>
+                  </>
+              ) : 
+              showMessage && (
+                  <p>Incorrect Credentials</p>
+              )
+
+          }
+      </section>
+      <section className="formContainer">
+          <span className="inputContainer">
+              <label htmlFor="email">Email: </label>
+              <input type="email" id="email" name="email" value={email} onChange={HandleInputChange(setEmail)}/>
+          </span>
+          <span className="inputContainer">
+              <label htmlFor="password">Password: </label>
+              <input type="password" id="password" name="password" value={password} onChange={HandleInputChange(setPassword)} />
+          </span>
+          <button onClick={HandleOnClickEnviar}>LogIn</button>
+      </section>
+      </>
+  );
 }
 
-export default App
+export default App;
