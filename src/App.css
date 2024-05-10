@@ -55,3 +55,37 @@ button:hover {
   background-color: #150053;
   color:  white;
 }
+
+.tableContainer {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+thead th {
+  background-color: #000000;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+}
+
+tbody tr:hover {
+  background-color: #23007b;
+}
+
+th, td {
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+th:first-child, td:first-child {
+  border-left: none;
+}
+
+th:last-child, td:last-child {
+  border-right: none;
+}
