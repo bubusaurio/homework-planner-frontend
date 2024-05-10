@@ -1,11 +1,18 @@
 import './App.css'
-import React, { useState } from 'react';
+import { useEffect, useState } from "react";
 
 function App() {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [showData, setShowData] = useState<boolean>(false);
   const [showMessage, setMessage] = useState<boolean>(false);
+  const [homework, setHomework] = useState<any>(null)
+
+  useEffect(() => {
+    fetch("http://localhost:3010/api/v1/homeworks/findFirst")
+    .then((res) => res.json())
+    .then((data) => setHomework(data))
+  }, [])
 
   const HandleInputChange = (stateUpdate: (arg0: any) => void) => {
       return (event: { target: { value: any; }; }) => {
@@ -29,8 +36,9 @@ function App() {
           {
               showData ?(
                   <>
-                  <p>Email: {email}</p>
-                  <p>Password: {password}</p>
+                  <h3>The first homework is</h3>
+                  <p>Name: {homework.name}</p>
+                  <p>Description: {homework.description}</p>
                   </>
               ) : 
               showMessage && (
