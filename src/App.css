@@ -15,7 +15,7 @@ body {
 }
 
 .formContainer {
-  background-color: #f5f7fa;
+  background-color: #092857;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -41,13 +41,14 @@ body {
 .buttonContainer {
   display: flex;
   justify-content: center;
+  color: darkcyan;
 }
 
 button {
   padding: 10px 20px;
   border: none;
   border-radius: 4px;
-  color: rgb(10, 10, 10);
+  color: rgb(78, 51, 212);
   cursor: pointer;
 }
 
@@ -88,4 +89,28 @@ th:first-child, td:first-child {
 
 th:last-child, td:last-child {
   border-right: none;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Remove margin from header links */
+header a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 10px; /* Adjust margin to bring links closer */
+}
+
+header a:hover {
+  text-decoration: underline;
 }
